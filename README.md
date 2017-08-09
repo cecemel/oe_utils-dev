@@ -19,12 +19,13 @@ git clone --recursive https://github.com/cecemel/oe_utils-dev.git
 cd oe_utils-dev
 ```
 
-### building
+### building & running
 ```
 # assumes you are in folder oe_utils-dev
 docker-compose stop; docker-compose rm -f; #not required, but cleans your working environment
 # assumes you are in metaaldetectievondstmeldingen-dev
 python build_images.py [GITHUB_USER] [GITHUB_PASS];
+docker-compose up; # note in this case only dependent services will keep running.
 ```
 
 #### reset backend one liner
@@ -36,7 +37,7 @@ docker-compose stop; docker-compose rm -f; rm -rf data/*; python build_images.py
 see e.g. 
 https://blog.jetbrains.com/pycharm/2017/03/docker-compose-getting-flask-up-and-running/
 
-### rebuilding
+### rebuilding (when e.g. requirements.txt has been updated)
 ```
 # e.g.
 python build_images.py [GITHUB_USER] [GITHUB_PASS] oe_utils
@@ -48,3 +49,5 @@ python build_images.py [GITHUB_USER] [GITHUB_PASS] oe_utils
 - scripts contain some hard coded parameters and should be cleaned
 - a generic base image should be extract to speed up image build
 - clean-up scripts, docker-compose should be sufficient for all migrations
+- for some mysterious reason, pycharm kills the containers when running the unittests for the first time. 
+    So you have to run them a second time and it should be fine from then on.
