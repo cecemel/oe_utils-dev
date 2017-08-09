@@ -50,4 +50,4 @@ python build_images.py [GITHUB_USER] [GITHUB_PASS] oe_utils
 - a generic base image should be extract to speed up image build
 - clean-up scripts, docker-compose should be sufficient for all migrations
 - for some mysterious reason, pycharm kills the containers when running the unittests for the first time. 
-    So you have to run them a second time and it should be fine from then on.
+    So you have to run them a second time and it should be fine from then on. (to get dependent services started)
