@@ -1,0 +1,28 @@
+version: "2"
+services:
+  oe_utils-elastic:
+    image: geosolutions/elasticsearch-plugins
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./data/elastic:/usr/share/elasticsearch/data
+  oe_utils-db:
+    image: oe_utils-dev/postgres:latest
+    environment:
+      - "POSTGRES_PASSWORD=postgres"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  oe_utils-app:
+    image: oe_utils-dev/oe_utils:latest
+    ports:
+     - "6543:6543"
+    volumes:
+     - ./oe_utils:/app
+     - ./docker-files/oe_utils/test.ini:/app/tests/test.ini
+    links:
+     - oe_utils-db:postgres
+     - oe_utils-elastic:elastic
+

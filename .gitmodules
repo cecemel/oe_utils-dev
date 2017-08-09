@@ -1,0 +1,3 @@
+[submodule "oe_utils"]
+	path = oe_utils
+	url = https://github.com/OnroerendErfgoed/oe_utils.git
