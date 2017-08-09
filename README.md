@@ -21,7 +21,7 @@ cd oe_utils-dev
 
 ### building
 ```
-# assumes you are in folder metaaldetectievondstmeldingen-dev
+# assumes you are in folder oe_utils-dev
 docker-compose stop; docker-compose rm -f; #not required, but cleans your working environment
 # assumes you are in metaaldetectievondstmeldingen-dev
 python build_images.py [GITHUB_USER] [GITHUB_PASS];
